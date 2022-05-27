@@ -19,7 +19,6 @@ services:
             - ../laravel/:/var/www/
 
     db:
-        # image: mysql:5.7
         image: mariadb:latest
         container_name: db
         environment:
@@ -28,8 +27,6 @@ services:
             MYSQL_PASSWORD: password
             MYSQL_ROOT_PASSWORD: root
             TZ: Asia/Tokyo
-        volumes:
-            - ./mysql/my.cnf:/etc/mysql/my.cnf
 
     # node:
     #     image: node:lts-alpine
