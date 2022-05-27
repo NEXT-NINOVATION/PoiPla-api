@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            
+            // Firebaseから発行されたUIDを関連づけるためのUID
+            $table->string('uid')->unique();
             $table->rememberToken();
             $table->timestamps();
         });
