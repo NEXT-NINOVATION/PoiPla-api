@@ -16,6 +16,5 @@ jobs:
           chmod 600 /home/runner/.ssh/Keypair.pem
           ssh-keyscan "${{PRODUCTION_ENVIRONMENT_IP}}" >> ~/.ssh/known_hosts
       - name: Deploy to EC2
-        working-directory: ./src
         run: |
           touch test.php
