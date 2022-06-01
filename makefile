@@ -6,7 +6,7 @@ dc := user=$(USER) docker-compose -f ./docker/docker-compose.yml
 .PHONY: init
 init:
 	$(dc) up -d --build
-	bash ./docker/mysql/sql.sh
+	bash ./docker/sql.sh
 	$(dc) exec php /bin/bash -c "composer install"
 	$(dc) exec php /bin/bash -c "cp .env.example .env"
 	$(dc) exec php /bin/bash -c "php artisan key:generate"
@@ -15,7 +15,6 @@ init:
 .PHONY: up
 up:
 	$(dc) up -d --build
-	bash ./docker/mysql/sql.sh
 
 .PHONY: down
 down:
@@ -24,6 +23,11 @@ down:
 .PHONY: restart
 restart:
 	$(dc) restart
+
+.PHONY: reup
+reup:
+	@make up
+	@make down
 
 .PHONY: rm
 rm:
