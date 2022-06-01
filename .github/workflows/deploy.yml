@@ -14,7 +14,7 @@ jobs:
           touch /home/runner/.ssh/Keypair.pem
           echo "${{ secrets.SSH_DEPLOY_KEY }}" > /home/runner/.ssh/Keypair.pem
           chmod 600 /home/runner/.ssh/Keypair.pem
-          ssh-keyscan "${{PRODUCTION_ENVIRONMENT_IP}}" >> ~/.ssh/known_hosts
+          ssh-keyscan "${{ secrets.PRODUCTION_ENVIRONMENT_IP }}" >> ~/.ssh/known_hosts
       - name: Deploy to EC2
         run: |
           touch test.php
