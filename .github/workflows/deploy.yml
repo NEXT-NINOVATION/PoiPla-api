@@ -1,0 +1,21 @@
+name: Deploy to EC2
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    name: setup ssh
+    runs-on: ubuntu-latest
+    steps:
+      - name: setup ssh
+        run: |
+          mkdir -p /home/runner/.ssh
+          touch /home/runner/.ssh/Keypair.pem
+          echo "${{ secrets.SSH_DEPLOY_KEY }}" > /home/runner/.ssh/Keypair.pem
+          chmod 600 /home/runner/.ssh/Keypair.pem
+          ssh-keyscan "${{PRODUCTION_ENVIRONMENT_IP}}" >> ~/.ssh/known_hosts
+      - name: Deploy to EC2
+        working-directory: ./src
+        run: |
+          touch test.php
