@@ -26,8 +26,8 @@ restart:
 
 .PHONY: reup
 reup:
-	@make up
 	@make down
+	@make init
 
 .PHONY: rm
 rm:
