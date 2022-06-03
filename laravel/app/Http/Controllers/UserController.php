@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -59,5 +61,12 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function register(){
+        $user = User::create();
+        $token = $user->createToken(Str::random(10));
+
+        return ['token' => $token->plainTextToken];
     }
 }
