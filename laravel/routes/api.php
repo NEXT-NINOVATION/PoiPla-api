@@ -20,7 +20,7 @@ use App\Http\Controllers\UserController;
 // });
 
 // 認証
-Route::get('/register', [UserController::class, 'register']);
+Route::post('/register', [UserController::class, 'register']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', [UserController::class, 'me']);
