@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Str;
 
@@ -69,5 +70,10 @@ class UserController extends Controller
         $token = $user->createToken(Str::random(10));
 
         return ['token' => $token->plainTextToken];
+    }
+
+    public function me()
+    {
+        return Auth::user();
     }
 }

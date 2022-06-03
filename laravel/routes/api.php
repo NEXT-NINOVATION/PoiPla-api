@@ -23,7 +23,5 @@ use App\Http\Controllers\UserController;
 Route::get('/register', [UserController::class, 'register']);
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/test', function () {
-        return 'ok';
-    });
+    Route::get('/me', [UserController::class, 'me']);
 });
