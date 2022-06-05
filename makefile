@@ -10,7 +10,7 @@ init:
 	$(dc) exec -d php /bin/bash -c "composer install"
 	$(dc) exec -d php /bin/bash -c "cp .env.example .env"
 	$(dc) exec -d php /bin/bash -c "php artisan key:generate"
-	$(dc) exec -d php /bin/bash -c "php artisan migrate"
+	@make fresh
 
 .PHONY: up
 up:
