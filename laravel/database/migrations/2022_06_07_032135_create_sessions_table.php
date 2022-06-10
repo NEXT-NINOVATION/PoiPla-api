@@ -15,15 +15,14 @@ return new class extends Migration {
         Schema::create('sessions', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('dust_box_id');
-            $table->date('completed_at');
-            $table->date('complete_flag');
+            $table->date('completed_at')->nullable();
             $table->timestamps();
 
             $table
                 ->foreign('user_id')
                 ->references('id')
                 ->on('users');
-            // $table->foreign('dust_box_id')->references('id')->on('dust_boxes');
+            $table->foreign('dust_box_id')->references('id')->on('dust_boxes');
         });
     }
 
