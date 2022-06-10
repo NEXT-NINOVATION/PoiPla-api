@@ -14,7 +14,7 @@ return new class extends Migration {
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('costume_id')->default(null);
+            $table->unsignedBigInteger('costume_id')->default(0);
             $table->integer('level')->default(1);
             $table->integer('exp')->default(0);
             $table->integer('point')->default(0);
