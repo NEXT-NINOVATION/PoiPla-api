@@ -12,15 +12,12 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('costume_id')->default(null);
-            $table->integer('level')->default(1);
-            $table->integer('exp')->default(0);
-            $table->integer('point')->default(0);
-            $table->integer('total_pet')->default(0);
+        Schema::create('my_costumes', function (Blueprint $table) {
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('costume_id');
             $table->timestamps();
 
+            // $table->foreign('user_id')->references('id')->on('users');
             // $table->foreign('costume_id')->references('id')->on('costume');
         });
     }
@@ -32,6 +29,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('my_costumes');
     }
 };
