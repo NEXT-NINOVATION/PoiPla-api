@@ -19,17 +19,13 @@ class SessionController extends Controller
         return $this->createSessionWhenAuth(Auth::user(), $dustBox);
     }
 
-
     private function createSessionWhenAuth(User $user, DustBox $box)
     {
-        $session = new Session;
+        $session = new Session();
         $session->user_id = $user->id;
 
         return $box->sessions()->create([
             'user_id' => $user->id,
         ]);
-
     }
-
-
 }

@@ -13,7 +13,7 @@ class DustBox extends Model
     protected $hidden = ['token'];
 
     protected $fillable = ['token', 'dust_box_adr'];
-    public function sessions() 
+    public function sessions()
     {
         return $this->hasMany(Session::class, 'dust_box_id');
     }

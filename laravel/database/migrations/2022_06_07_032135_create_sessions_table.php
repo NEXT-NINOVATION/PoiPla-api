@@ -16,14 +16,20 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('dust_box_id');
-            $table->date('completed_at')->nullable()->default(null);
+            $table
+                ->date('completed_at')
+                ->nullable()
+                ->default(null);
             $table->timestamps();
 
             $table
                 ->foreign('user_id')
                 ->references('id')
                 ->on('users');
-            $table->foreign('dust_box_id')->references('id')->on('dust_boxes');
+            $table
+                ->foreign('dust_box_id')
+                ->references('id')
+                ->on('dust_boxes');
         });
     }
 

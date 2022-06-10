@@ -12,7 +12,8 @@ class Session extends Model
 
     protected $fillable = ['dust_box_id', 'user_id', 'completed_at'];
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 }
