@@ -66,7 +66,7 @@ class UserController extends Controller
     public function register()
     {
         $user = User::create();
-        $token = $user->createToken("user_" . $user->id);
+        $token = $user->createToken('user_' . $user->id);
 
         return ['token' => $token->plainTextToken];
     }
