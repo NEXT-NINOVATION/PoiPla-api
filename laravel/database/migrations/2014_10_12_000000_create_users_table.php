@@ -14,14 +14,20 @@ return new class extends Migration {
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('costume_id')->nullable()->default(null);
+            $table
+                ->unsignedBigInteger('costume_id')
+                ->nullable()
+                ->default(null);
             $table->integer('level')->default(1);
             $table->integer('exp')->default(0);
             $table->integer('point')->default(0);
             $table->integer('total_pet')->default(0);
             $table->timestamps();
 
-            $table->foreign('costume_id')->references('id')->on('costumes');
+            $table
+                ->foreign('costume_id')
+                ->references('id')
+                ->on('costumes');
         });
     }
 
