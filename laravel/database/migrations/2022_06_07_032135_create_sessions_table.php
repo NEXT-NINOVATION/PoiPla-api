@@ -22,14 +22,8 @@ return new class extends Migration {
                 ->default(null);
             $table->timestamps();
 
-            $table
-                ->foreign('user_id')
-                ->references('id')
-                ->on('users');
-            $table
-                ->foreign('dust_box_id')
-                ->references('id')
-                ->on('dust_boxes');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('dust_box_id')->references('id')->on('dust_boxes');
         });
     }
 

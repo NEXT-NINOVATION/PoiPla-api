@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -12,13 +13,13 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('my_costumes', function (Blueprint $table) {
+        Schema::create('my_titles', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('costume_id');
+            $table->unsignedBigInteger('title_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('costume_id')->references('id')->on('costumes');
+            $table->foreign('title_id')->references('id')->on('titles');
         });
     }
 
@@ -29,6 +30,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('my_costumes');
+        Schema::dropIfExists('my_titles');
     }
 };

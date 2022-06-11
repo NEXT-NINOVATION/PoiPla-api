@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -67,7 +66,7 @@ class UserController extends Controller
     public function register()
     {
         $user = User::create();
-        $token = $user->createToken(Str::random(10));
+        $token = $user->createToken("user_" . $user->id);
 
         return ['token' => $token->plainTextToken];
     }
