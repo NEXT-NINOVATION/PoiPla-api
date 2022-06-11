@@ -19,8 +19,11 @@ return new class extends Migration
             $table->integer('rarity')->default(1);
             $table->float('rate')->nullable()->default(null);
             $table->integer('req_lv')->nullable()->default(null);
-            $table->integer('pref_id')->nullable()->default(null);
-            $table->integer('event_id')->nullable()->default(null);
+            $table->unsignedBigInteger('pref_id')->nullable()->default(null);
+            $table->unsignedBigInteger('event_id')->nullable()->default(null);
+
+            $table->foreign('pref_id')->references('id')->on('prefectures');
+            $table->foreign('event_id')->references('id')->on('events');
         });
     }
 
