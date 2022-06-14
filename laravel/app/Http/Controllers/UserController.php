@@ -41,7 +41,6 @@ class UserController extends Controller
         //
     }
 
-
     /**
      * Remove the specified resource from storage.
      *
@@ -69,9 +68,9 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request)
     {
         $user = Auth::user();
-        $user->name = $request->input('name');
-        if ($request->input('costume_id')) {
-            $user->costume_id = $request->input('costume_id');
+        $user->name = $request->input("name");
+        if ($request->input("costume_id")) {
+            $user->costume_id = $request->input("costume_id");
         }
         $user->save();
         return $user;

@@ -22,7 +22,7 @@ return new class extends Migration {
             $table->integer("exp")->default(0);
             $table->integer("point")->default(0);
             $table->integer("total_pet")->default(0);
-            $table->string('name')->nullable();
+            $table->string("name")->nullable();
             $table->timestamps();
 
             $table
