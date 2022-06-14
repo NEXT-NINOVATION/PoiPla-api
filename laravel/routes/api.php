@@ -26,4 +26,5 @@ Route::post("/register", [UserController::class, "register"]);
 Route::middleware("auth:sanctum")->group(function () {
     Route::get("/me", [UserController::class, "me"]);
     Route::post("/dust-boxes/{dustBoxId}/sessions", [SessionController::class, "store"]);
+    Route::put("/me", [UserController::class, "update"]);
 });
