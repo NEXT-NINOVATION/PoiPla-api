@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\DustBox;
 use App\Models\Session;
 use App\Models\User;
+use Carbon\Carbon;
 
 class SessionController extends Controller
 {
@@ -26,6 +27,7 @@ class SessionController extends Controller
 
         return $box->sessions()->create([
             "user_id" => $user->id,
+            "completed_at" => new Carbon(config('app.completed_at', '+3 minutes')),
         ]);
     }
 }
