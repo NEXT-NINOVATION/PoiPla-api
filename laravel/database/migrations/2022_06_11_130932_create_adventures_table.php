@@ -12,16 +12,16 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('adventures', function (Blueprint $table) {
-            $table->unsignedBigInteger('pref_id');
-            $table->time('req_time');
-            $table->integer('earn_point');
-            $table->integer('earn_exp');
+        Schema::create("adventures", function (Blueprint $table) {
+            $table->unsignedBigInteger("pref_id");
+            $table->time("req_time");
+            $table->integer("earn_point");
+            $table->integer("earn_exp");
 
             $table
-                ->foreign('pref_id')
-                ->references('id')
-                ->on('prefectures');
+                ->foreign("pref_id")
+                ->references("id")
+                ->on("prefectures");
         });
     }
 
@@ -32,6 +32,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('adventures');
+        Schema::dropIfExists("adventures");
     }
 };

@@ -12,19 +12,19 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('clatter_results', function (Blueprint $table) {
-            $table->unsignedBigInteger('pref_id');
-            $table->unsignedBigInteger('event_id');
+        Schema::create("clatter_results", function (Blueprint $table) {
+            $table->unsignedBigInteger("pref_id");
+            $table->unsignedBigInteger("event_id");
             $table->timestamps();
 
             $table
-                ->foreign('pref_id')
-                ->references('id')
-                ->on('prefectures');
+                ->foreign("pref_id")
+                ->references("id")
+                ->on("prefectures");
             $table
-                ->foreign('event_id')
-                ->references('id')
-                ->on('events');
+                ->foreign("event_id")
+                ->references("id")
+                ->on("events");
         });
     }
 
@@ -35,6 +35,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('clatter_results');
+        Schema::dropIfExists("clatter_results");
     }
 };

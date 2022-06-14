@@ -10,7 +10,7 @@ class Session extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['dust_box_id', 'user_id', 'completed_at'];
+    protected $fillable = ["dust_box_id", "user_id", "completed_at"];
 
     public function user()
     {

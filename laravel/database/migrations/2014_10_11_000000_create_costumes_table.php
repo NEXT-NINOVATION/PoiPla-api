@@ -12,35 +12,35 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('costumes', function (Blueprint $table) {
+        Schema::create("costumes", function (Blueprint $table) {
             $table->id();
-            $table->string('costume_name', 20);
-            $table->integer('rarity')->default(1);
+            $table->string("costume_name", 20);
+            $table->integer("rarity")->default(1);
             $table
-                ->float('rate')
+                ->float("rate")
                 ->nullable()
                 ->default(null);
             $table
-                ->integer('req_lv')
+                ->integer("req_lv")
                 ->nullable()
                 ->default(null);
             $table
-                ->unsignedBigInteger('pref_id')
+                ->unsignedBigInteger("pref_id")
                 ->nullable()
                 ->default(null);
             $table
-                ->unsignedBigInteger('event_id')
+                ->unsignedBigInteger("event_id")
                 ->nullable()
                 ->default(null);
 
             $table
-                ->foreign('pref_id')
-                ->references('id')
-                ->on('prefectures');
+                ->foreign("pref_id")
+                ->references("id")
+                ->on("prefectures");
             $table
-                ->foreign('event_id')
-                ->references('id')
-                ->on('events');
+                ->foreign("event_id")
+                ->references("id")
+                ->on("events");
         });
     }
 
@@ -51,6 +51,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('costumes');
+        Schema::dropIfExists("costumes");
     }
 };

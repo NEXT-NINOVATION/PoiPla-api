@@ -24,6 +24,6 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         // NOTE: ゴミ箱を作る
-        DustBox::create(['dust_box_adr' => 'test', 'token' => Str::uuid()]);
+        DustBox::create(["dust_box_adr" => "test", "token" => Str::uuid()]);
     }
 }
