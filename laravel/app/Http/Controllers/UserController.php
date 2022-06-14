@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use Illuminate\Support\Str;
+use App\Http\Requests\UpdateUserRequest;
 
 class UserController extends Controller
 {
@@ -42,18 +42,6 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -67,13 +55,24 @@ class UserController extends Controller
     public function register()
     {
         $user = User::create();
-        $token = $user->createToken(Str::random(10));
+        $token = $user->createToken("user_" . $user->id);
 
-        return ['token' => $token->plainTextToken];
+        return ["token" => $token->plainTextToken];
     }
 
     public function me()
     {
         return Auth::user();
+    }
+
+    public function update(UpdateUserRequest $request)
+    {
+        $user = Auth::user();
+        $user->name = $request->input("name");
+        if ($request->input("costume_id")) {
+            $user->costume_id = $request->input("costume_id");
+        }
+        $user->save();
+        return $user;
     }
 }

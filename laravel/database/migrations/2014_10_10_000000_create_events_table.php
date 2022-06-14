@@ -12,11 +12,11 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('dust_boxes', function (Blueprint $table) {
+        Schema::create("events", function (Blueprint $table) {
             $table->id();
-            $table->string('dust_box_adr', 100);
-            $table->string('token', 128)->unique();
-            $table->timestamps();
+            $table->string("event_name", 30)->unique();
+            $table->date("start_at")->nullable();
+            $table->date("end_at")->nullable();
         });
     }
 
@@ -27,6 +27,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('dust_boxes');
+        Schema::dropIfExists("events");
     }
 };
