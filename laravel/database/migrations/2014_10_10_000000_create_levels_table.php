@@ -12,9 +12,9 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('levels', function (Blueprint $table) {
-            $table->integer('level');
-            $table->integer('req_exp');
+        Schema::create("levels", function (Blueprint $table) {
+            $table->integer("level");
+            $table->integer("req_exp");
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('levels');
+        Schema::dropIfExists("levels");
     }
 };

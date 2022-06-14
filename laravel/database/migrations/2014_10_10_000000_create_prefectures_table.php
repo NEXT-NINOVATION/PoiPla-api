@@ -12,9 +12,9 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('prefectures', function (Blueprint $table) {
+        Schema::create("prefectures", function (Blueprint $table) {
             $table->id();
-            $table->string('pref_name', 10)->unique();
+            $table->string("pref_name", 10)->unique();
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('prefectures');
+        Schema::dropIfExists("prefectures");
     }
 };

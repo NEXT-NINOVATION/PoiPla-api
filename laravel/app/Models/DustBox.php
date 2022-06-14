@@ -10,11 +10,11 @@ class DustBox extends Model
 {
     use HasFactory;
 
-    protected $hidden = ['token'];
+    protected $hidden = ["token"];
 
-    protected $fillable = ['token', 'dust_box_adr'];
+    protected $fillable = ["token", "dust_box_adr"];
     public function sessions()
     {
-        return $this->hasMany(Session::class, 'dust_box_id');
+        return $this->hasMany(Session::class, "dust_box_id");
     }
 }

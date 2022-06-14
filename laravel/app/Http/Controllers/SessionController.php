@@ -25,7 +25,7 @@ class SessionController extends Controller
         $session->user_id = $user->id;
 
         return $box->sessions()->create([
-            'user_id' => $user->id,
+            "user_id" => $user->id,
         ]);
     }
 }

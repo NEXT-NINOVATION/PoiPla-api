@@ -12,19 +12,19 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('my_costumes', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('costume_id');
+        Schema::create("my_costumes", function (Blueprint $table) {
+            $table->unsignedBigInteger("user_id");
+            $table->unsignedBigInteger("costume_id");
             $table->timestamps();
 
             $table
-                ->foreign('user_id')
-                ->references('id')
-                ->on('users');
+                ->foreign("user_id")
+                ->references("id")
+                ->on("users");
             $table
-                ->foreign('costume_id')
-                ->references('id')
-                ->on('costumes');
+                ->foreign("costume_id")
+                ->references("id")
+                ->on("costumes");
         });
     }
 
@@ -35,6 +35,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('my_costumes');
+        Schema::dropIfExists("my_costumes");
     }
 };

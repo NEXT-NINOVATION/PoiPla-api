@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use App\Http\Requets\UpdateUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 
 class UserController extends Controller
 {
@@ -56,9 +56,9 @@ class UserController extends Controller
     public function register()
     {
         $user = User::create();
-        $token = $user->createToken('user_' . $user->id);
+        $token = $user->createToken("user_" . $user->id);
 
-        return ['token' => $token->plainTextToken];
+        return ["token" => $token->plainTextToken];
     }
 
     public function me()
