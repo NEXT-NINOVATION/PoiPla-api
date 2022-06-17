@@ -27,7 +27,7 @@ class SessionController extends Controller
 
         return $box->sessions()->create([
             "user_id" => $user->id,
-            "completed_at" => new Carbon(config('app.completed_at', '+3 minutes')),
+            "completed_at" => new Carbon(config("app.completed_at", "+3 minutes")),
         ]);
     }
 }
