@@ -22,6 +22,9 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        $this->call([
+            RaritySeeder::class,
+        ]);
 
         // NOTE: ゴミ箱を作る
         DustBox::create(["dust_box_adr" => "test", "token" => Str::uuid()]);

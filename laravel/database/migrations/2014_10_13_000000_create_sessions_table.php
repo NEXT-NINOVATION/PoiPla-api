@@ -20,7 +20,6 @@ return new class extends Migration {
                 ->date("completed_at")
                 ->nullable()
                 ->default(null);
-            $table->boolean("completed_flag")->default(true);
             $table->timestamps();
 
             $table
