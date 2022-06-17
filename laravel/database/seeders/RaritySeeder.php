@@ -17,12 +17,12 @@ class RaritySeeder extends Seeder
     {
         //
         Rarity::create([
-           'rarity' => 0,
-           'rate' => 7.0,
+            'rarity' => 5,
+            'rate' => 0.3,
         ]);
         Rarity::create([
-            'rarity' => 5,
-            'rate' => 3.0,
+            'rarity' => 4,
+            'rate' => 0.5,
         ]);
     }
 }
