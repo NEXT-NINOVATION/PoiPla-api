@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\DustBox;
 use App\Models\Session;
 use App\Models\User;
-use Carbon\Carbon;
+use App\Models\Costume;
+use App\Models\ClatterResult;
 
 class SessionController extends Controller
 {
@@ -29,5 +31,25 @@ class SessionController extends Controller
             "user_id" => $user->id,
             "completed_at" => new Carbon(config("app.completed_at", "+3 minutes")),
         ]);
+    }
+    
+    // public function pushes(Request $request)
+    public function pushes()
+    {
+        // $token = $request->input("token");
+        $token = 'hoge';
+        $dust_box = DustBox::where('token', $token)->firstOrFail();
+
+        $session = $dust_box->sessions()->first();
+        $completed_at = new Carbon($session->completed_at);
+        $user_id = Auth::user()->id;
+        $clatter = Costume::clatter();
+
+        if(isset($clatter['earn_exp'])){
+            return $clatter;
+        }elseif($completed_at->gte(new Carbon('now')) && $session->user_id == $user_id){
+        // }elseif($session->user_id == $user_id){
+            return ClatterResult::create(['user_id' => $user_id, 'costume_id' => $clatter->id]);
+        }
     }
 }
