@@ -45,11 +45,15 @@ class SessionController extends Controller
         $user_id = Auth::user()->id;
         $clatter = Costume::clatter();
 
+        // ガチャ結果が経験値なら やべーじっそーだな（小並感）
         if(isset($clatter['earn_exp'])){
-            return $clatter;
-        }elseif($completed_at->gte(new Carbon('now')) && $session->user_id == $user_id){
-        // }elseif($session->user_id == $user_id){
-            return ClatterResult::create(['user_id' => $user_id, 'costume_id' => $clatter->id]);
+            $result = $clatter;
+        // 時間以内でかつuser_idが一致しているか
+        // }elseif($completed_at->gte(new Carbon('now')) && $session->user_id == $user_id){
+        }elseif($session->user_id == $user_id){
+            $result = ClatterResult::create(['user_id' => $user_id, 'costume_id' => $clatter->id]);
         }
+
+        return [$session, $result];
     }
 }
