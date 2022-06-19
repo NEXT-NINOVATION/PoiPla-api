@@ -76,7 +76,8 @@ class CostumeController extends Controller
             $per = ($rarity->rate * 100);
             $sum = $sum + $per;
             if ($random < $sum) {
-                return [$rarity, $random];
+                // return $rarity->costumes()->get();
+                return $rarity->costumes()->inRandomOrder()->first();
                 break;
             }
         }

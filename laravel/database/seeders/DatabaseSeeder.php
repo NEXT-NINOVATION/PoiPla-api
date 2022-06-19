@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
             RaritySeeder::class,
+            CostumeSeeder::class,
         ]);
 
         // NOTE: ゴミ箱を作る
