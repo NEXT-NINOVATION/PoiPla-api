@@ -13,18 +13,18 @@ return new class extends Migration {
     public function up()
     {
         Schema::create("clatter_results", function (Blueprint $table) {
-            $table->unsignedBigInteger("pref_id");
-            $table->unsignedBigInteger("event_id");
+            $table->unsignedBigInteger("user_id");
+            $table->unsignedBigInteger("costume_id");
             $table->timestamps();
 
             $table
-                ->foreign("pref_id")
+                ->foreign("user_id")
                 ->references("id")
-                ->on("prefectures");
+                ->on("users");
             $table
-                ->foreign("event_id")
+                ->foreign("costume_id")
                 ->references("id")
-                ->on("events");
+                ->on("costumes");
         });
     }
 

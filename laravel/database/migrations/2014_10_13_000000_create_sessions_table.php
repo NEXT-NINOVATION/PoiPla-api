@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->unsignedBigInteger("user_id");
             $table->unsignedBigInteger("dust_box_id");
             $table
-                ->date("completed_at")
+                ->datetime("completed_at")
                 ->nullable()
                 ->default(null);
             $table->timestamps();

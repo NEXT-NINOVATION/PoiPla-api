@@ -210,4 +210,14 @@ return [
             // 'ExampleClass' => App\Example\ExampleClass::class,
         ])
         ->toArray(),
+
+    /*
+    | セッションの有効期限
+    */
+    "completed_at" => "+3 minutes",
+
+    /*
+    | ガチャ時の経験値
+    */
+    "clatter_earn_exp" => 30,
 ];
