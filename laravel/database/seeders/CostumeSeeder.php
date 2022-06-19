@@ -17,16 +17,16 @@ class CostumeSeeder extends Seeder
     {
         //
         $costumes = [
-            ['name' => 'hoge', 'req_lv' => 10, 'rarity_id' => 1],
-            ['name' => 'piyo', 'req_lv' => 20, 'rarity_id' => 1],
-            ['name' => 'fuga', 'req_lv' => 10, 'rarity_id' => 2],
+            ["name" => "hoge", "req_lv" => 10, "rarity_id" => 1],
+            ["name" => "piyo", "req_lv" => 20, "rarity_id" => 1],
+            ["name" => "fuga", "req_lv" => 10, "rarity_id" => 2],
         ];
 
-        foreach($costumes as $costume){
+        foreach ($costumes as $costume) {
             Costume::create([
-                'costume_name' => $costume['name'],
-                'req_lv' => $costume['req_lv'],
-                'rarity_id' => $costume['rarity_id'],
+                "costume_name" => $costume["name"],
+                "req_lv" => $costume["req_lv"],
+                "rarity_id" => $costume["rarity_id"],
             ]);
         }
     }

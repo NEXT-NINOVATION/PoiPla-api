@@ -18,14 +18,14 @@ class DustBoxSeeder extends Seeder
     {
         //
         $dust_boxes = [
-            ['dust_box_adr' => 'koko', 'token' => 'hoge'],
-            ['dust_box_adr' => 'soko', 'token' => Str::uuid()],
+            ["dust_box_adr" => "koko", "token" => "hoge"],
+            ["dust_box_adr" => "soko", "token" => Str::uuid()],
         ];
 
-        foreach($dust_boxes as $dust_box){
+        foreach ($dust_boxes as $dust_box) {
             DustBox::create([
-                'dust_box_adr' => $dust_box['dust_box_adr'],
-                'token' => $dust_box['token'],
+                "dust_box_adr" => $dust_box["dust_box_adr"],
+                "token" => $dust_box["token"],
             ]);
         }
     }

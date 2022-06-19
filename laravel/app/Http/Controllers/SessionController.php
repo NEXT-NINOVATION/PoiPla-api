@@ -32,13 +32,13 @@ class SessionController extends Controller
             "completed_at" => new Carbon(config("app.completed_at", "+3 minutes")),
         ]);
     }
-    
+
     // public function pushes(Request $request)
     public function pushes()
     {
         // $token = $request->input("token");
-        $token = 'hoge';
-        $dust_box = DustBox::where('token', $token)->firstOrFail();
+        $token = "hoge";
+        $dust_box = DustBox::where("token", $token)->firstOrFail();
 
         $session = $dust_box->sessions()->first();
         $completed_at = new Carbon($session->completed_at);
@@ -46,12 +46,12 @@ class SessionController extends Controller
         $clatter = Costume::clatter();
 
         // ガチャ結果が経験値なら やべーじっそーだな（小並感）
-        if(isset($clatter['earn_exp'])){
+        if (isset($clatter["earn_exp"])) {
             $result = $clatter;
-        // 時間以内でかつuser_idが一致しているか
-        // }elseif($completed_at->gte(new Carbon('now')) && $session->user_id == $user_id){
-        }elseif($session->user_id == $user_id){
-            $result = ClatterResult::create(['user_id' => $user_id, 'costume_id' => $clatter->id]);
+            // 時間以内でかつuser_idが一致しているか
+            // }elseif($completed_at->gte(new Carbon('now')) && $session->user_id == $user_id){
+        } elseif ($session->user_id == $user_id) {
+            $result = ClatterResult::create(["user_id" => $user_id, "costume_id" => $clatter->id]);
         }
 
         return [$session, $result];
