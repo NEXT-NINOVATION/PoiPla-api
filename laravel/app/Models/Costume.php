@@ -12,6 +12,10 @@ class Costume extends Model
 
     public $timestamps = false;
 
+    /*
+    | ガチャガチャ
+    | ハズレの場合は false を返す
+    */
     public static function clatter()
     {
         $rarities = Rarity::orderBy("rate", "asc")->get();
@@ -32,6 +36,6 @@ class Costume extends Model
             }
         }
 
-        return ["earn_exp" => config("app.clatter_earn_exp", 10)];
+        return false;
     }
 }
