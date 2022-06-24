@@ -17,11 +17,41 @@ class CostumeSeeder extends Seeder
     {
         //
         $costumes = [
-            ["name" => "たこ", "image" => "octopus",  "req_lv" => 1, "point" => 100, "rarity_id" => 1],
-            ["name" => "クラゲ", "image" => "jellyfish",  "req_lv" => 3, "point" => 120, "rarity_id" => 3],
-            ["name" => "クジラ", "image" => "whale",  "req_lv" => 50, "point" => 1000, "rarity_id" => 5],
-            ["name" => "かめ", "image" => "turtle",  "req_lv" => 50, "point" => 50, "rarity_id" => 5],
-            ["name" => "サメ", "image" => "shark",  "req_lv" => 50, "point" => 1200, "rarity_id" => 5],
+            [
+                "name" => "たこ",
+                "image" => "octopus",
+                "req_lv" => 1,
+                "point" => 100,
+                "rarity_id" => 1,
+            ],
+            [
+                "name" => "クラゲ",
+                "image" => "jellyfish",
+                "req_lv" => 3,
+                "point" => 120,
+                "rarity_id" => 3,
+            ],
+            [
+                "name" => "クジラ",
+                "image" => "whale",
+                "req_lv" => 50,
+                "point" => 1000,
+                "rarity_id" => 5,
+            ],
+            [
+                "name" => "かめ",
+                "image" => "turtle",
+                "req_lv" => 50,
+                "point" => 50,
+                "rarity_id" => 5,
+            ],
+            [
+                "name" => "サメ",
+                "image" => "shark",
+                "req_lv" => 50,
+                "point" => 1200,
+                "rarity_id" => 5,
+            ],
         ];
 
         foreach ($costumes as $costume) {

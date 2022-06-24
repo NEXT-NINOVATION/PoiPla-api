@@ -16,7 +16,10 @@ return new class extends Migration {
             $table->id();
             $table->string("costume_name", 20);
             $table->string("image", 255);
-            $table->integer("point")->nullable()->default(null);
+            $table
+                ->integer("point")
+                ->nullable()
+                ->default(null);
             $table
                 ->integer("req_lv")
                 ->nullable()
