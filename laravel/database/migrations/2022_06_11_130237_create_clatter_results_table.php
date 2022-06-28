@@ -15,6 +15,8 @@ return new class extends Migration {
         Schema::create("clatter_results", function (Blueprint $table) {
             $table->unsignedBigInteger("user_id");
             $table->unsignedBigInteger("costume_id");
+            $table->unsignedBigInteger("session_id");
+            $table->integer("earn_exp")->default(0);
             $table->timestamps();
 
             $table
@@ -25,6 +27,10 @@ return new class extends Migration {
                 ->foreign("costume_id")
                 ->references("id")
                 ->on("costumes");
+            $table
+                ->foreign("session_id")
+                ->references("id")
+                ->on("sessions");
         });
     }
 
