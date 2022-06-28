@@ -30,7 +30,7 @@ Route::middleware("auth:sanctum")->group(function () {
     // UserController
     Route::get("/me", [UserController::class, "me"]);
     Route::put("/me", [UserController::class, "update"]);
-    Route::get("/me/costumes", [MyCostumeController::class, 'index']);
+    Route::get("/me/costumes", [MyCostumeController::class, "index"]);
     // SessionController
     Route::post("/dust-boxes/{dustBoxId}/sessions", [SessionController::class, "store"]);
     Route::post("/iot/dust-box-pushes", [SessionController::class, "pushes"]);

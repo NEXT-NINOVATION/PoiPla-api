@@ -38,6 +38,6 @@ class User extends Authenticatable
 
     public function costumes()
     {
-        return $this->belongsToMany(Costume::class, 'my_costumes', 'user_id', 'costume_id');
+        return $this->belongsToMany(Costume::class, "my_costumes", "user_id", "costume_id");
     }
 }

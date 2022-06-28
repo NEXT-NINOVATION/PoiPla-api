@@ -9,7 +9,6 @@ use App\Models\User;
 use App\Models\Costume;
 class MyCostumeController extends Controller
 {
-
     public function index()
     {
         $user = Auth::user();
@@ -18,23 +17,19 @@ class MyCostumeController extends Controller
 
     public function attachAllCostumesIntoAllUsers()
     {
-
-        $users = User::with('costumes')->get();
+        $users = User::with("costumes")->get();
         $costumes = Costume::get();
-        foreach ($costumes as $costume)
-        {
-            foreach ($users as $user)
-            {
-                if (!$user->costumes || !$user->costumes->count()){
+        foreach ($costumes as $costume) {
+            foreach ($users as $user) {
+                if (!$user->costumes || !$user->costumes->count()) {
                     $user->costumes()->attach($costume->id);
                 }
             }
         }
 
         return [
-            'users' => User::with('costumes')->get(),
-            'costumes' => $costumes,
+            "users" => User::with("costumes")->get(),
+            "costumes" => $costumes,
         ];
-        
     }
 }
