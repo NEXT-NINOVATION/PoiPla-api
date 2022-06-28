@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\MyCostumeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +24,18 @@ use App\Http\Controllers\SessionController;
 // 認証
 Route::post("/register", [UserController::class, "register"]);
 
+Route::get("/attach-all-costumes", [MyCostumeController::class, "attachAllCostumesIntoAllUsers"]);
+
 Route::middleware("auth:sanctum")->group(function () {
+    // UserController
     Route::get("/me", [UserController::class, "me"]);
-    Route::post("/dust-boxes/{dustBoxId}/sessions", [SessionController::class, "store"]);
     Route::put("/me", [UserController::class, "update"]);
+    Route::get("/me/costumes", [MyCostumeController::class, "index"]);
+    // SessionController
+    Route::post("/dust-boxes/{dustBoxId}/sessions", [SessionController::class, "store"]);
+    Route::put("/dust-boxes/{dustBoxId}/sessions/{sessionId}", [
+        SessionController::class,
+        "complete",
+    ]);
+    Route::post("/iot/dust-box-pushes", [SessionController::class, "pushes"]);
 });

@@ -15,13 +15,17 @@ return new class extends Migration {
         Schema::create("costumes", function (Blueprint $table) {
             $table->id();
             $table->string("costume_name", 20);
-            $table->integer("rarity")->default(1);
+            $table->string("image", 255);
             $table
-                ->float("rate")
+                ->integer("point")
                 ->nullable()
                 ->default(null);
             $table
                 ->integer("req_lv")
+                ->nullable()
+                ->default(null);
+            $table
+                ->unsignedBigInteger("rarity_id")
                 ->nullable()
                 ->default(null);
             $table
@@ -33,6 +37,10 @@ return new class extends Migration {
                 ->nullable()
                 ->default(null);
 
+            $table
+                ->foreign("rarity_id")
+                ->references("id")
+                ->on("rarities");
             $table
                 ->foreign("pref_id")
                 ->references("id")

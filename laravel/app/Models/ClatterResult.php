@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ClatterResult extends Model
 {
     use HasFactory;
+
+    protected $fillable = ["user_id", "costume_id", "session_id", "earn_exp"];
+
+    protected $primaryKey = "session_id";
 }
