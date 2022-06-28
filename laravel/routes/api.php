@@ -21,7 +21,7 @@ use App\Http\Controllers\SessionController;
 // });
 
 // 認証
-Route::post("/register", [UserController::class, "register"]);
+Route::get("/register", [UserController::class, "register"]);
 
 Route::middleware("auth:sanctum")->group(function () {
     // UserController
@@ -29,6 +29,6 @@ Route::middleware("auth:sanctum")->group(function () {
     Route::put("/me", [UserController::class, "update"]);
 
     // SessionController
-    Route::post("/dust-boxes/{dustBoxId}/sessions", [SessionController::class, "store"]);
-    Route::post("/iot/dust-box-pushes", [SessionController::class, "pushes"]);
+    Route::get("/dust-boxes/{dustBoxId}/sessions", [SessionController::class, "store"]);
+    Route::get("/iot/dust-box-pushes", [SessionController::class, "pushes"]);
 });
