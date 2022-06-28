@@ -36,8 +36,8 @@ class User extends Authenticatable
         "email_verified_at" => "datetime",
     ];
 
-    protected $with = ['costume'];
-    
+    protected $with = ["costume"];
+
     public function costumes()
     {
         return $this->belongsToMany(Costume::class, "my_costumes", "user_id", "costume_id");
@@ -45,6 +45,6 @@ class User extends Authenticatable
 
     public function costume()
     {
-        return $this->belongsTo(Costume::class, 'costume_id');
+        return $this->belongsTo(Costume::class, "costume_id");
     }
 }
