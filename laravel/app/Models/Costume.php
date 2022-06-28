@@ -14,8 +14,8 @@ class Costume extends Model
 
     public $timestamps = false;
 
-    protected $with = ['prefecture', 'event', 'rarityRef'];
-    protected $appends = ['rarity', 'buyable_flag'];
+    protected $with = ["prefecture", "event", "rarityRef"];
+    protected $appends = ["rarity", "buyable_flag"];
 
     /*
     | ガチャガチャ
@@ -46,7 +46,7 @@ class Costume extends Model
 
     public function prefecture()
     {
-        return $this->belongsTo(Prefecture::class, 'pref_id');
+        return $this->belongsTo(Prefecture::class, "pref_id");
     }
 
     public function event()
@@ -56,7 +56,7 @@ class Costume extends Model
 
     public function rarityRef()
     {
-        return $this->belongsTo(Rarity::class, 'rarity_id');
+        return $this->belongsTo(Rarity::class, "rarity_id");
     }
 
     public function getRarityAttribute()
@@ -66,7 +66,6 @@ class Costume extends Model
 
     public function getBuyableFlagAttribute()
     {
-        return (bool)$this->point;
+        return (bool) $this->point;
     }
-
 }
