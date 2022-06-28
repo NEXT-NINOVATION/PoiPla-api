@@ -49,18 +49,25 @@ class SessionController extends Controller
         // ガチャ結果がハズレなら
         if (!$clatter) {
             $result = ["earn_exp" => config("app.clatter_earn_exp", 10)];
-        // デバックしにくいのでコメントアウト
-        // 時間以内でかつuser_idが一致しているか
-        // }elseif($completed_at->gte(new Carbon('now')) && $session->user_id == $user_id){
+            // デバックしにくいのでコメントアウト
+            // 時間以内でかつuser_idが一致しているか
+            // }elseif($completed_at->gte(new Carbon('now')) && $session->user_id == $user_id){
         } elseif ($session->user_id == $user_id) {
             $result = ClatterResult::create([
                 "session_id" => $session->id,
                 "user_id" => $user_id,
-                "costume_id" => $clatter->id
+                "costume_id" => $clatter->id,
             ]);
         }
 
-        event(new MyEvent($dust_box, ClatterResult::where("session_id", $session->id)->get()->count()));
+        event(
+            new MyEvent(
+                $dust_box,
+                ClatterResult::where("session_id", $session->id)
+                    ->get()
+                    ->count()
+            )
+        );
         return [$session, $result];
     }
 }

@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->unsignedBigInteger("user_id");
             $table->unsignedBigInteger("costume_id");
             $table->unsignedBigInteger("session_id");
-            $table->integer('earn_exp')->default(0);
+            $table->integer("earn_exp")->default(0);
             $table->timestamps();
 
             $table

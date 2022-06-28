@@ -36,11 +36,11 @@ class ThrowEvent
     public function broadcastOn()
     {
         // return new PrivateChannel('channel-name');
-        return ['dust-box-' . $dustBoxId];
+        return ["dust-box-" . $dustBoxId];
     }
 
     public function broadcastAs()
     {
-        return 'dust-box-' . $this->dust_box->id;
+        return "dust-box-" . $this->dust_box->id;
     }
 }
