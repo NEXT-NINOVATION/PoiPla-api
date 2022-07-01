@@ -16,7 +16,7 @@ class ThrowEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $count, $dust_box;
+    public $count, $dust_box, $session;
 
     /**
      * Create a new event instance.
@@ -27,6 +27,7 @@ class ThrowEvent
     {
         //
         $this->dust_box = $dust_box;
+        $this->session = $session;
         $this->count = ClatterResult::where("session_id", $session->id)->get()->count();
     }
 
