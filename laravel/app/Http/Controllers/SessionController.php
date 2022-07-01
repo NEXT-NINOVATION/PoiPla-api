@@ -50,11 +50,11 @@ class SessionController extends Controller
         if (!$clatter) {
             $result = ClatterResult::create([
                 "session_id" => $session->id,
-                "earn_exp" => config("app.clatter_earn_exp", 10)
+                "earn_exp" => config("app.clatter_earn_exp", 10),
             ]);
-        // デバックしにくいのでコメントアウト
-        // 時間以内か
-        // }elseif($completed_at->gte(new Carbon('now'))){
+            // デバックしにくいのでコメントアウト
+            // 時間以内か
+            // }elseif($completed_at->gte(new Carbon('now'))){
         } else {
             $result = ClatterResult::create([
                 "session_id" => $session->id,
@@ -63,9 +63,7 @@ class SessionController extends Controller
         }
 
         // イベントを発火する
-        event(
-            new ThrowEvent($dust_box,$session)
-        );
+        event(new ThrowEvent($dust_box, $session));
         return [$session, $result];
     }
 
