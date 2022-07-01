@@ -41,7 +41,12 @@ class SessionController extends Controller
         $token = $request->input("token");
         $dust_box = DustBox::where("token", $token)->firstOrFail();
 
-        $session = $dust_box->sessions()->first();
+        $session = $dust_box->sessions()->orderBy("id", "asc")->lastOrNull();
+        if ($session == null) {
+            return response()->json([
+                "error" => "session not found",
+            ], 404);
+        }
         $completed_at = new Carbon($session->completed_at);
 
         // ガチャを引く
