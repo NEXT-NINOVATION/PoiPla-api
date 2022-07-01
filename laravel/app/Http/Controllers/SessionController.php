@@ -60,14 +60,9 @@ class SessionController extends Controller
             ]);
         }
 
-        // 同じセッション内で捨てたゴミの数を取得してイベント発火する
+        // イベントを発火する
         event(
-            new MyEvent(
-                $dust_box,
-                ClatterResult::where("session_id", $session->id)
-                    ->get()
-                    ->count()
-            )
+            new ThrowEvent($dust_box,$session)
         );
         return [$session, $result];
     }
@@ -79,6 +74,8 @@ class SessionController extends Controller
         $session = $dustBox->sessions()->findOrFail($sessionId);
         $session->completed_at = new Carbon("0000-00-00 00:00:00");
         $session->save();
-        return response(null, 204);
+
+        $result = ClatterResult::where("session_id", $session->id)->get();
+        return response($result, 204);
     }
 }

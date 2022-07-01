@@ -9,6 +9,8 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Auth;
+use App\Models\ClatterResult;
 
 class ThrowEvent
 {
@@ -21,11 +23,14 @@ class ThrowEvent
      *
      * @return void
      */
-    public function __construct($dust_box, $count)
+    public function __construct($dust_box, $session)
     {
         //
-        $this->dust_box = $dust_box;
-        return $this->count = $count;
+        $user_id = Auth::user()->id;
+        if($session->user_id == $user_id){
+            $this->dust_box = $dust_box;
+            $this->count = ClatterResult::where("session_id", $session->id)->get()->count();
+        }
     }
 
     /**
@@ -36,7 +41,7 @@ class ThrowEvent
     public function broadcastOn()
     {
         // return new PrivateChannel('channel-name');
-        return ["dust-box-" . $dustBoxId];
+        return ["dust-box-" . $this->dust_box->id];
     }
 
     public function broadcastAs()
