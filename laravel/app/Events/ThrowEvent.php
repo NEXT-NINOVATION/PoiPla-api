@@ -26,11 +26,8 @@ class ThrowEvent
     public function __construct($dust_box, $session)
     {
         //
-        $user_id = Auth::user()->id;
-        if($session->user_id == $user_id){
-            $this->dust_box = $dust_box;
-            $this->count = ClatterResult::where("session_id", $session->id)->get()->count();
-        }
+        $this->dust_box = $dust_box;
+        $this->count = ClatterResult::where("session_id", $session->id)->get()->count();
     }
 
     /**
@@ -46,6 +43,6 @@ class ThrowEvent
 
     public function broadcastAs()
     {
-        return "dust-box-" . $this->dust_box->id;
+        return "result-count";
     }
 }

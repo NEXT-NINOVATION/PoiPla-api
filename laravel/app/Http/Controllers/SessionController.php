@@ -10,6 +10,7 @@ use App\Models\Session;
 use App\Models\User;
 use App\Models\Costume;
 use App\Models\ClatterResult;
+use App\Events\ThrowEvent;
 
 class SessionController extends Controller
 {
@@ -42,20 +43,21 @@ class SessionController extends Controller
 
         $session = $dust_box->sessions()->first();
         $completed_at = new Carbon($session->completed_at);
-        $user_id = Auth::user()->id;
 
         // ガチャを引く
         $clatter = Costume::clatter();
         // ガチャ結果がハズレなら
         if (!$clatter) {
-            $result = ["earn_exp" => config("app.clatter_earn_exp", 10)];
-        // デバックしにくいのでコメントアウト
-        // 時間以内でかつuser_idが一致しているか
-        // }elseif($completed_at->gte(new Carbon('now')) && $session->user_id == $user_id){
-        } elseif ($session->user_id == $user_id) {
             $result = ClatterResult::create([
                 "session_id" => $session->id,
-                "user_id" => $user_id,
+                "earn_exp" => config("app.clatter_earn_exp", 10)
+            ]);
+        // デバックしにくいのでコメントアウト
+        // 時間以内か
+        // }elseif($completed_at->gte(new Carbon('now'))){
+        } else {
+            $result = ClatterResult::create([
+                "session_id" => $session->id,
                 "costume_id" => $clatter->id,
             ]);
         }

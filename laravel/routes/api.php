@@ -37,5 +37,5 @@ Route::middleware("auth:sanctum")->group(function () {
         SessionController::class,
         "complete",
     ]);
-    Route::post("/iot/dust-box-pushes", [SessionController::class, "pushes"]);
 });
+Route::post("/iot/dust-box-pushes", [SessionController::class, "pushes"]);
