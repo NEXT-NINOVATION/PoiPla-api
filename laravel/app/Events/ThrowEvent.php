@@ -46,6 +46,6 @@ class ThrowEvent
 
     public function broadcastAs()
     {
-        return "dust-box-" . $this->dust_box->id;
+        return "result-count";
     }
 }

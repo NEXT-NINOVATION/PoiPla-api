@@ -10,6 +10,7 @@ use App\Models\Session;
 use App\Models\User;
 use App\Models\Costume;
 use App\Models\ClatterResult;
+use App\Events\ThrowEvent;
 
 class SessionController extends Controller
 {
