@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\ClatterResult;
 
 class Session extends Model
 {
@@ -16,4 +17,11 @@ class Session extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function clatterResults()
+    {
+        return $this->hasMany(ClatterResult::class);
+    }
+
+    
 }
