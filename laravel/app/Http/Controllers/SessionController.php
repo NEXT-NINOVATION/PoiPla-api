@@ -41,7 +41,10 @@ class SessionController extends Controller
         $token = $request->input("token");
         $dust_box = DustBox::where("token", $token)->firstOrFail();
 
-        $session = $dust_box->sessions()->latest()->firstOrFail();
+        $session = $dust_box
+            ->sessions()
+            ->latest()
+            ->firstOrFail();
         $completed_at = new Carbon($session->completed_at);
 
         // ガチャを引く
@@ -72,10 +75,10 @@ class SessionController extends Controller
     {
         $dustBox = DustBox::findOrFail($dustBoxId);
         $session = $dustBox->sessions()->findOrFail($sessionId);
-        $session->completed_at = new Carbon("0000-00-00 00:00:00");
+        $session->completed_at = Carbon::now();
         $session->save();
 
         $result = ClatterResult::where("session_id", $session->id)->get();
-        return response($result, 204);
+        return $result;
     }
 }
