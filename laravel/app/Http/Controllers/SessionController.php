@@ -72,10 +72,10 @@ class SessionController extends Controller
     {
         $dustBox = DustBox::findOrFail($dustBoxId);
         $session = $dustBox->sessions()->findOrFail($sessionId);
-        $session->completed_at = new Carbon("0000-00-00 00:00:00");
+        $session->completed_at = Carbon::now();
         $session->save();
 
         $result = ClatterResult::where("session_id", $session->id)->get();
-        return response($result, 204);
+        return $result;
     }
 }
