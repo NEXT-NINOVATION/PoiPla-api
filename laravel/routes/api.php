@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\MyCostumeController;
-
+use App\Http\Controllers\ClatterResultController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -37,5 +37,6 @@ Route::middleware("auth:sanctum")->group(function () {
         SessionController::class,
         "complete",
     ]);
+    Route::get("/dust-boxes/{dustBoxId}/sessions/{sessionId}/clatter-results", [ClatterResultController::class, 'index']);
 });
 Route::post("/iot/dust-box-pushes", [SessionController::class, "pushes"]);
