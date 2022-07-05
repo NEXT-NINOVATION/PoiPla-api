@@ -12,4 +12,15 @@ class ClatterResult extends Model
     protected $fillable = ["user_id", "costume_id", "session_id", "earn_exp"];
 
     protected $primaryKey = "session_id";
+
+    protected $appends = ["type"];
+
+    public function getTypeAttribute()
+    {
+        if ($this->costume_id) {
+            return "constume";
+        } else {
+            return "exp";
+        }
+    }
 }

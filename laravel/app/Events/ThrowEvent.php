@@ -28,7 +28,9 @@ class ThrowEvent implements ShouldBroadcast
         //
         $this->dust_box = $dust_box;
         $this->session = $session;
-        $this->count = ClatterResult::where("session_id", $session->id)->get()->count();
+        $this->count = ClatterResult::where("session_id", $session->id)
+            ->get()
+            ->count();
     }
 
     /**

@@ -41,7 +41,10 @@ class SessionController extends Controller
         $token = $request->input("token");
         $dust_box = DustBox::where("token", $token)->firstOrFail();
 
-        $session = $dust_box->sessions()->latest()->firstOrFail();
+        $session = $dust_box
+            ->sessions()
+            ->latest()
+            ->firstOrFail();
         $completed_at = new Carbon($session->completed_at);
 
         // ガチャを引く
@@ -50,11 +53,11 @@ class SessionController extends Controller
         if (!$clatter) {
             $result = ClatterResult::create([
                 "session_id" => $session->id,
-                "earn_exp" => config("app.clatter_earn_exp", 10)
+                "earn_exp" => config("app.clatter_earn_exp", 10),
             ]);
-        // デバックしにくいのでコメントアウト
-        // 時間以内か
-        // }elseif($completed_at->gte(new Carbon('now'))){
+            // デバックしにくいのでコメントアウト
+            // 時間以内か
+            // }elseif($completed_at->gte(new Carbon('now'))){
         } else {
             $result = ClatterResult::create([
                 "session_id" => $session->id,
@@ -63,9 +66,7 @@ class SessionController extends Controller
         }
 
         // イベントを発火する
-        event(
-            new ThrowEvent($dust_box,$session)
-        );
+        event(new ThrowEvent($dust_box, $session));
         return [$session, $result];
     }
 
@@ -74,10 +75,10 @@ class SessionController extends Controller
     {
         $dustBox = DustBox::findOrFail($dustBoxId);
         $session = $dustBox->sessions()->findOrFail($sessionId);
-        $session->completed_at = new Carbon("0000-00-00 00:00:00");
+        $session->completed_at = Carbon::now();
         $session->save();
 
         $result = ClatterResult::where("session_id", $session->id)->get();
-        return response($result, 204);
+        return $result;
     }
 }
