@@ -17,8 +17,7 @@ class ClatterResult extends Model
 
     public function getTypeAttribute()
     {
-        if ($this->costume_id) 
-        {
+        if ($this->costume_id) {
             return "constume";
         } else {
             return "exp";
