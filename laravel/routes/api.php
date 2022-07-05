@@ -37,6 +37,9 @@ Route::middleware("auth:sanctum")->group(function () {
         SessionController::class,
         "complete",
     ]);
-    Route::get("/dust-boxes/{dustBoxId}/sessions/{sessionId}/clatter-results", [ClatterResultController::class, 'index']);
+    Route::get("/dust-boxes/{dustBoxId}/sessions/{sessionId}/clatter-results", [
+        ClatterResultController::class,
+        "index",
+    ]);
 });
 Route::post("/iot/dust-box-pushes", [SessionController::class, "pushes"]);

@@ -12,10 +12,9 @@ class ClatterResult extends Model
 
     protected $fillable = ["user_id", "costume_id", "session_id", "earn_exp"];
 
-
     protected $appends = ["type"];
 
-    protected $with = ['costume'];
+    protected $with = ["costume"];
 
     public function getTypeAttribute()
     {
