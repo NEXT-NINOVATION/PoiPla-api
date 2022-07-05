@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Costume;
 
 class ClatterResult extends Model
 {
@@ -11,9 +12,10 @@ class ClatterResult extends Model
 
     protected $fillable = ["user_id", "costume_id", "session_id", "earn_exp"];
 
-    protected $primaryKey = "session_id";
 
     protected $appends = ["type"];
+
+    protected $with = ['costume'];
 
     public function getTypeAttribute()
     {
@@ -22,5 +24,10 @@ class ClatterResult extends Model
         } else {
             return "exp";
         }
+    }
+
+    public function costume()
+    {
+        return $this->belongsTo(Costume::class);
     }
 }
