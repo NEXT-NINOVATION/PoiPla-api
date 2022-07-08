@@ -55,9 +55,6 @@ class SessionController extends Controller
                 "session_id" => $session->id,
                 "earn_exp" => config("app.clatter_earn_exp", 10),
             ]);
-            // デバックしにくいのでコメントアウト
-            // 時間以内か
-            // }elseif($completed_at->gte(new Carbon('now'))){
         } else {
             $result = ClatterResult::create([
                 "session_id" => $session->id,
