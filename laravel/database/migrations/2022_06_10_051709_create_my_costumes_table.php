@@ -13,6 +13,7 @@ return new class extends Migration {
     public function up()
     {
         Schema::create("my_costumes", function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger("user_id");
             $table->unsignedBigInteger("costume_id");
             $table->timestamps();

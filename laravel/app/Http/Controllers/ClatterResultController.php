@@ -13,9 +13,9 @@ class ClatterResultController extends Controller
     public function index($dustBoxId, $sessionId, Request $request)
     {
         $user = Auth::user();
-        $session = Session::where('dust_box_id', $dustBoxId)
-            ->where('user_id', $user->id)
-            ->orderBy('created_at', 'desc')
+        $session = Session::where("dust_box_id", $dustBoxId)
+            ->where("user_id", $user->id)
+            ->orderBy("created_at", "desc")
             ->firstOrFail();
         return $session->clatterResults()->get();
     }
