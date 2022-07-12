@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Costume::class, "costume_id");
     }
+
+    public function mycostumes()
+    {
+        return $this->hasMany(MyCostume::class, "user_id");
+    }
 }
