@@ -55,9 +55,19 @@ class SessionController extends Controller
                 "session_id" => $session->id,
                 "earn_exp" => config("app.clatter_earn_exp", 10),
             ]);
+            // Userのexpに追加
+            $user = $session->user;
+            $user->exp += $result->earn_exp;
+            $user->save();
         } else {
             $result = ClatterResult::create([
                 "session_id" => $session->id,
+                "costume_id" => $clatter->id,
+            ]);
+            // Mycostumeに追加
+            $user = $session->user;
+            $user->costumes()->create([
+                "user_id" => $user->id,
                 "costume_id" => $clatter->id,
             ]);
         }
