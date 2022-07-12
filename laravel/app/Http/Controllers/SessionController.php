@@ -66,9 +66,9 @@ class SessionController extends Controller
             ]);
             // Mycostumeに追加
             $user = $session->user;
-            $user->costumes()->create([
+            $user->mycostumes()->create([
                 "user_id" => $user->id,
-                "costume_id" => $clatter->id,
+                "costume_id" => $result->costume_id,
             ]);
         }
 
