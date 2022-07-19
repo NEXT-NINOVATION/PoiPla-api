@@ -18,35 +18,40 @@ class CostumeSeeder extends Seeder
         //
         $costumes = [
             [
-                "name" => "たこ",
+                "name" => "たこすけ",
+                "type" => "タコ",
                 "image" => "octopus",
                 "req_lv" => 1,
                 "point" => 100,
                 "rarity_id" => 1,
             ],
             [
-                "name" => "クラゲ",
+                "name" => "ミッちゃん",
+                "type" => "クラゲ",
                 "image" => "jellyfish",
                 "req_lv" => 3,
                 "point" => 120,
                 "rarity_id" => 3,
             ],
             [
-                "name" => "クジラ",
+                "name" => "ララ",
+                "type" => "クジラ",
                 "image" => "whale",
                 "req_lv" => 50,
                 "point" => 1000,
                 "rarity_id" => 5,
             ],
             [
-                "name" => "かめ",
+                "name" => "かめきち",
+                "type" => "かめ",
                 "image" => "turtle",
                 "req_lv" => 50,
                 "point" => 50,
                 "rarity_id" => 5,
             ],
             [
-                "name" => "サメ",
+                "name" => "さめこ",
+                "type" => "サメ",
                 "image" => "shark",
                 "req_lv" => 50,
                 "point" => 1200,
@@ -57,6 +62,7 @@ class CostumeSeeder extends Seeder
         foreach ($costumes as $costume) {
             Costume::create([
                 "costume_name" => $costume["name"],
+                "animal_type" => $costume["type"],
                 "image" => $costume["image"],
                 "req_lv" => $costume["req_lv"],
                 "rarity_id" => $costume["rarity_id"],
