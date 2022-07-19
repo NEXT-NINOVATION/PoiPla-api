@@ -29,7 +29,8 @@ class CostumeSeeder extends Seeder
             [
                 "name" => "ミッちゃん",
                 "type" => "クラゲ",
-                "description" => "スーのことがだいすきなミズクラゲ。いつもはおとなしいけれど、 おこったらスーをビリビリさせちゃうぞ！",
+                "description" =>
+                    "スーのことがだいすきなミズクラゲ。いつもはおとなしいけれど、 おこったらスーをビリビリさせちゃうぞ！",
                 "image" => "jellyfish",
                 "req_lv" => 3,
                 "point" => 120,
@@ -47,7 +48,8 @@ class CostumeSeeder extends Seeder
             [
                 "name" => "かめきち",
                 "type" => "かめ",
-                "description" => "スーにおよぐことをおしえた、スーのむかしからのおともだち。きれいなうみで、のびのびとおよぐのがだいすき！",
+                "description" =>
+                    "スーにおよぐことをおしえた、スーのむかしからのおともだち。きれいなうみで、のびのびとおよぐのがだいすき！",
                 "image" => "turtle",
                 "req_lv" => 50,
                 "point" => 50,
