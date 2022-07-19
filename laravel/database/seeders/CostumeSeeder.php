@@ -20,6 +20,7 @@ class CostumeSeeder extends Seeder
             [
                 "name" => "たこすけ",
                 "type" => "タコ",
+                "description" => "説明",
                 "image" => "octopus",
                 "req_lv" => 1,
                 "point" => 100,
@@ -28,6 +29,7 @@ class CostumeSeeder extends Seeder
             [
                 "name" => "ミッちゃん",
                 "type" => "クラゲ",
+                "description" => "スーのことがだいすきなミズクラゲ。いつもはおとなしいけれど、 おこったらスーをビリビリさせちゃうぞ！",
                 "image" => "jellyfish",
                 "req_lv" => 3,
                 "point" => 120,
@@ -36,6 +38,7 @@ class CostumeSeeder extends Seeder
             [
                 "name" => "ララ",
                 "type" => "クジラ",
+                "description" => "説明",
                 "image" => "whale",
                 "req_lv" => 50,
                 "point" => 1000,
@@ -44,6 +47,7 @@ class CostumeSeeder extends Seeder
             [
                 "name" => "かめきち",
                 "type" => "かめ",
+                "description" => "スーにおよぐことをおしえた、スーのむかしからのおともだち。きれいなうみで、のびのびとおよぐのがだいすき！",
                 "image" => "turtle",
                 "req_lv" => 50,
                 "point" => 50,
@@ -52,6 +56,7 @@ class CostumeSeeder extends Seeder
             [
                 "name" => "さめこ",
                 "type" => "サメ",
+                "description" => "説明",
                 "image" => "shark",
                 "req_lv" => 50,
                 "point" => 1200,
