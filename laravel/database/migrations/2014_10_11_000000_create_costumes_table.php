@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->string("costume_name", 20);
             $table->string("animal_type", 20);
+            $table->string("description", 500);
             $table->string("image", 255);
             $table
                 ->integer("point")
