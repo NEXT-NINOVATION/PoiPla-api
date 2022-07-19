@@ -70,6 +70,7 @@ class CostumeSeeder extends Seeder
             Costume::create([
                 "costume_name" => $costume["name"],
                 "animal_type" => $costume["type"],
+                "description" => $costume["description"],
                 "image" => $costume["image"],
                 "req_lv" => $costume["req_lv"],
                 "rarity_id" => $costume["rarity_id"],
