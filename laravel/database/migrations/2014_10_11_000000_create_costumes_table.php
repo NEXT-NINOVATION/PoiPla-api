@@ -15,6 +15,7 @@ return new class extends Migration {
         Schema::create("costumes", function (Blueprint $table) {
             $table->id();
             $table->string("costume_name", 20);
+            $table->string("animal_type", 20);
             $table->string("image", 255);
             $table
                 ->integer("point")
